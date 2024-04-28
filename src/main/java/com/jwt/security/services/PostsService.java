@@ -16,6 +16,9 @@ public interface PostsService {
     void deletePost(Posts posts);
 
     void savePost(Posts posts);
+    List<Posts> getPostsByNameAsc();
+
+    List<Posts> findPostsByNameDesc();
 
 
 }

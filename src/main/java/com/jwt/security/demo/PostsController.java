@@ -1,5 +1,6 @@
 package com.jwt.security.demo;
 
+import com.jwt.security.config.JwtService;
 import com.jwt.security.dto.PostsDto;
 import com.jwt.security.repositories.PostsRepository;
 import com.jwt.security.repositories.UserRepository;
@@ -35,6 +36,9 @@ public class PostsController {
 
     @Autowired
     private PostsRepository postsRepository;
+
+    @Autowired
+    private JwtService jwtService;
 
     @PostMapping("/add")
     public ResponseEntity<String> addPost(@RequestBody PostsDto postsDto, @AuthenticationPrincipal UserDetails userDetails) {
@@ -117,4 +121,13 @@ public class PostsController {
         }
     }
 
+    @GetMapping("/asc")
+    public List<Posts> getPostsByNameAsc() {
+        return postsService.getPostsByNameAsc();
+    }
+
+    @GetMapping("/desc")
+    public List<Posts> getPostsByNameDesc() {
+        return postsService.findPostsByNameDesc();
+    }
 }

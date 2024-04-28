@@ -62,5 +62,14 @@ public class PostsServiceImpl implements PostsService {
         postsRepository.save(posts);
     }
 
+    @Override
+    public List<Posts> getPostsByNameAsc() {
+        return postsRepository.findAllByOrderByTitleAsc();
+    }
+
+    @Override
+    public List<Posts> findPostsByNameDesc() {
+        return postsRepository.findAllByOrderByTitleDesc();
+    }
 
 }
